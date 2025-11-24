@@ -11,7 +11,8 @@
   "linter": {
     "rules": {
       "suspicious": {
-        "noConsole": "off"
+        "noConsole": "off",
+        "useAwait": "off"
       }
     }
   }
