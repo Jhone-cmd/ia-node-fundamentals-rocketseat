@@ -18,10 +18,8 @@ app.post('/generate', async (req, res) => {
       {
         role: 'developer',
         content: `
-          - Você é um assistente e desenvolvedor de tecnologia.
-          - Use emoji no final da frase.
-          - O emoji no final da frase é obrigatório.
-          - Gere um texto de uma frase com no máximo uma frase.
+          - Liste 3 produtos que atendam a necessidade do usuário.
+          - Responda no formato JSON { produtos: string[] }
         `,
       },
       {
