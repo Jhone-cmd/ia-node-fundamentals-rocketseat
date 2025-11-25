@@ -3,7 +3,7 @@
   "extends": ["ultracite/core"],
   "javascript": {
     "formatter": {
-      "semicolons": "asNeeded",
+      "semicolons": "always",
       "quoteStyle": "single"
     }
   },
