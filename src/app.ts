@@ -14,6 +14,7 @@ app.post('/generate', async (req, res) => {
   const completion = await client.chat.completions.create({
     model: 'gpt-4o-mini',
     max_completion_tokens: 100,
+    response_format: { type: 'json_object' },
     messages: [
       {
         role: 'developer',
@@ -28,5 +29,6 @@ app.post('/generate', async (req, res) => {
       },
     ],
   })
+
   res.status(200).json({ message: completion.choices[0].message.content })
 })
