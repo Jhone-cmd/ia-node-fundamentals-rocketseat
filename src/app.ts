@@ -1,5 +1,6 @@
 import express from 'express'
 import OpenAI from 'openai'
+import z from 'zod'
 import { env } from './env/schema.ts'
 
 const client = new OpenAI({
@@ -20,7 +21,7 @@ app.post('/generate', async (req, res) => {
         role: 'developer',
         content: `
           - Liste 3 produtos que atendam a necessidade do usuário.
-          - Responda no formato JSON { produtos: string[] }
+          - Responda em JSON no formato { products: string[] }
         `,
       },
       {
@@ -30,5 +31,18 @@ app.post('/generate', async (req, res) => {
     ],
   })
 
-  res.status(200).json({ message: completion.choices[0].message.content })
+  const output = JSON.parse(completion.choices[0].message.content ?? '')
+
+  const schema = z.object({
+    products: z.array(z.string()),
+  })
+
+  const result = schema.safeParse(output)
+
+  if (!result.success) {
+    res.status(500).end()
+    return
+  }
+
+  res.status(200).json(output)
 })
