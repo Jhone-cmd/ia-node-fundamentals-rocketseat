@@ -12,7 +12,11 @@
     "rules": {
       "suspicious": {
         "noConsole": "off",
-        "useAwait": "off"
+        "useAwait": "off",
+        "noExplicitAny": "off"
+      },
+      "nursery": {
+        "noShadow": "off"
       }
     }
   }

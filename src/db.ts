@@ -34,9 +34,13 @@ const produtos: {
 ];
 
 export function produtosEmEstoque() {
-  return produtos.filter((produto) => produto.estoque > 0);
+  return produtos
+    .filter((produto) => produto.estoque > 0)
+    .map((product) => product.nome);
 }
 
 export function produtosEmFalta() {
-  return produtos.filter((produto) => produto.estoque === 0);
+  return produtos
+    .filter((produto) => produto.estoque === 0)
+    .map((product) => product.nome);
 }
