@@ -68,8 +68,10 @@ export const generateProducts = async (message: string) => {
   const messages: ChatCompletionMessageParam[] = [
     {
       role: 'developer',
-      content:
-        'Liste três produtos que atendam a necessidade do usuário. Considere apenas os produtos em estoque.',
+      content: `
+          - Liste 3 produtos que atendam a necessidade do usuário.
+          - Considere apenas os produtos disponíveis em estoque.
+          - Responda em JSON no formato { products: string[] }`,
     },
     {
       role: 'user',
